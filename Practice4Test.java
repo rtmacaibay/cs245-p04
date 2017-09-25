@@ -1,4 +1,3 @@
-
 public class Practice4Test {
 	
 	protected Queue queue;
@@ -27,10 +26,12 @@ public class Practice4Test {
 	public boolean isPalindrome(String item) {
 		clearData();
 		for (int i = 0; i < item.length(); i++) {
+			//i added in this part, just replace all the non-letter characters and lower case everything
+			item = item.replaceAll("[\\W]", "").toLowerCase();
 			stack.push(item.substring(i, i+1));
 			queue.enqueue(item.substring(i, i+1));
 		}
-
+		
 		while (! stack.empty() && ! queue.empty()) {
 			if (! stack.pop().equals(queue.dequeue())) {
 				return false;
